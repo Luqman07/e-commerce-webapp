@@ -8,9 +8,10 @@ app.get('/', (req, res) => {
     res.status(200).json({name: 'Luqman'})
 })
 app.get('/users', (req, res) => {
-    const sql = 'SELECT * FROM userauth'
+    const sql = 'SELECT id FROM users WHERE id=1'
     dbCon.query(sql, (err, data) => {
         if(err) res.status(404).json(err)
+        console.log(data)
         res.status(200).json(data)
     })
 })

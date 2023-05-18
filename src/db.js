@@ -1,9 +1,9 @@
 const mysql = require('mysql')
 const dbCon = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'user'
+    user: 'username',
+    password: 'password',
+    database: 'ecommercedb'
 })
 
 dbCon.connect((err) => {
