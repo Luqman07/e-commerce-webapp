@@ -1,20 +1,20 @@
 const express = require('express')
 const cors = require('cors')
-const dbCon = require('./db')
+const auth = require('./routes/authRouter')
+// const dbCon = require('./db')
 
 const app = express()
+
 app.use(cors())
-app.get('/', (req, res) => {
-    res.status(200).json({name: 'Luqman'})
-})
-app.get('/users', (req, res) => {
-    const sql = 'SELECT id FROM users WHERE id=1'
-    dbCon.query(sql, (err, data) => {
-        if(err) res.status(404).json(err)
-        console.log(data)
-        res.status(200).json(data)
-    })
-})
+
+// built in middleware for formdata: to extract the parameter
+app.use(express.urlencoded({extended: false}))
+
+// middleware for json data
+app.use(express.json())
+
+// router
+app.use("/api/auth", auth);
 
 app.listen(5000, () => {
     console.log('Listening on port 5000')
