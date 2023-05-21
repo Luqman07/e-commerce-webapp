@@ -26,3 +26,5 @@ function handleError(message = "Internal Server Error") {
   // Return standardised error response
   return { message, success: false };
 }
+
+module.exports = {createApiError, handleError}

@@ -1,16 +1,13 @@
 const dbCon = require("../db");
 
 const userExist = async _email => {
-    const sql = `SELECT email FROM users WHERE email=${_email}`
+    const sql = `SELECT email FROM users WHERE email= "${_email}";`
     
-    const user = dbCon.query(sql, (err, data) => {
+    const users = dbCon.query(sql, (err, results, fields) => {
         if(err) throw err
-        return data  
+        return results;
     })
-    if (user) {
-      return user;
-    }
-    return false;
+    return users.length > 1 
 };
 
 module.exports = userExist
