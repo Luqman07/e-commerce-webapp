@@ -8,7 +8,6 @@ router.get("/users", (req, res, next) => {
 
   dbCon.query(sql, (err, data) => {
     if (err) throw err;
-    log(data)
     res.status(200).json(data);
   });
 });
