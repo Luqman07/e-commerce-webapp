@@ -4,9 +4,9 @@ const handleRefreshToken = require('../controllers/refreshTokenController')
 const validateReg = require('../middleware/authValidators')
 
 
-// Access Token
+// Creates new Access Token
 
-router.get("/register", handleRefreshToken);
+router.post("/register", handleRefreshToken);
 
 
 module.exports = router;

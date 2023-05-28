@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const auth = require('./routes/authRouter')
 const users = require('./routes/userRouter')
+const refresh = require('./routes/refreshTokenRouter')
 const verifyJWT = require('./middleware/verifyJWT')
 
 const app = express()
@@ -16,6 +17,7 @@ app.use(express.json())
 
 // route
 app.use("/api/auth", auth);
+app.use("/api/refresh", refresh);
 
 app.use(verifyJWT)
 app.use("/api", users);

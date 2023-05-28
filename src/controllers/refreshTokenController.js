@@ -16,7 +16,7 @@ const handleRefreshToken = async (req, res) => {
       (err, decoded) => {
         if (err || user.id !== decoded.id) throw err;
         const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-          expiresIn: "1d",
+          expiresIn: "30s",
         });
         res.json({ message: "Access token created", data: accessToken });
       }
